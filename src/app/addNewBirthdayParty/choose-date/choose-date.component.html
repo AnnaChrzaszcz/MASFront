@@ -1,0 +1,31 @@
+<h1>Choose date and hour</h1>
+<form class="dateForm"  #dateForm="ngForm">
+  <div class="form-group">
+    <label for="year">Year</label>
+    <input type="number" id="year" min="2020" max="2030" [(ngModel)]="year" name="year" class="form-control" required="true" >
+    <br>
+
+    <label for="month">Month</label>
+    <input type="number" id="month" min="01" max="12" minlength="2" [(ngModel)]="month" name="month" class="form-control" required="true" >
+    <br>
+
+    <label for="day">Day</label>
+    <input type="number" id="day"  min="01" max="31" minlength="2" [(ngModel)]="day" name="day" class="form-control" required="true" >
+  </div>
+
+  <div class="form-group">
+    <p>Please select begging hour:</p>
+    <input type="radio" id="13" name="hour" value="13" [(ngModel)]="beginingHour">
+    <label for="13">13:00</label><br>
+    <input type="radio" id="15" name="hour" value="15" [(ngModel)]="beginingHour">
+    <label for="15">15:00</label><br>
+    <input type="radio" id="17" name="hour" value="17" [(ngModel)]="beginingHour">
+    <label for="17">17:00</label>
+  </div>
+
+  <br>
+  <button  (click)="openDialog()" type="button" class="btn"  >Alert test</button>
+  <button routerLink="/" (click)="cancel(dateForm)" type="button" class="btn btn-cancel"  >Cancel</button>
+  <button routerLink="/choosePackRoom" (click)="add(dateForm)" type="button" class="btn btn-primary float-right" [disabled]="!dateForm.valid" >Next</button>
+</form>
+

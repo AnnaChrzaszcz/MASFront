@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="column" >
+    <h2>Choose birthdayPerson</h2>
+    <button class="btn" id="selectBtn" (click)="chooseFlag=true; addFlag=false" >Select</button>
+
+    <div *ngIf="chooseFlag">
+    <label>Choose one:</label>
+    <select *ngIf="birthdayPersonList != null" [(ngModel)]="newBirthdayPerson">
+      <option *ngFor="let child of birthdayPersonList" [ngValue]="child">{{child.name + ' ' + child.surname}}</option>
+    </select>
+      <button (click)="choose()" type="button" class="btn btn-primary float-right" >Choose</button>
+    </div>
+
+
+  </div>
+  <div class="column" >
+    <h2>Add new birthdayPerson</h2>
+    <button class="btn" id="addBtn" (click)="addFlag=true; chooseFlag=false; newBirthdayPerson.name=''; newBirthdayPerson.surname=''">Add</button>
+
+    <form *ngIf="addFlag" class="dateForm"  #dateForm="ngForm">
+      <p>Choose birthdate</p>
+      <div class="form-group">
+        <label for="year">Year</label>
+        <input type="number" id="year" min="2020" max="2030" [(ngModel)]="year" name="year" class="form-control" required="true" >
+        <br>
+
+        <label for="month">Month</label>
+        <input type="number" id="month" min="01" max="12" minlength="2" [(ngModel)]="month" name="month" class="form-control" required="true" >
+        <br>
+
+        <label for="day">Day</label>
+        <input type="number" id="day"  min="01" max="31" minlength="2" [(ngModel)]="day" name="day" class="form-control" required="true" >
+      </div>
+
+      <label for="name">Name</label>
+      <input type="input" id="name"  [(ngModel)]="newBirthdayPerson.name" name="name" class="form-control" required="true" >
+      <br>
+
+      <label for="name">Surname</label>
+      <input type="input" id="surname"  [(ngModel)]="newBirthdayPerson.surname" name="surname" class="form-control" required="true" >
+      <br>
+
+
+      <div class="form-group">
+        <p>Please select chil gender:</p>
+      <input type="radio" id="girl" name="hour" value="true" [(ngModel)]="newBirthdayPerson.gender">
+        <label for="girl">Girl</label><br>
+        <input type="radio" id="boy" name="hour" value="false" [(ngModel)]="newBirthdayPerson.gender">
+        <label for="boy">Boy</label><br>
+      </div>
+
+      <br>
+      <button (click)="add()" type="button" class="btn btn-primary float-right" [disabled]="!dateForm.valid" >Add</button>
+    </form>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<button routerLink="/" type="button" class="btn btn-primary"  >Cancel</button>
+<button routerLink="/" (click)="Finish()" type="button" class="btn btn-primary float-right"  >Next</button>
+

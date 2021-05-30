@@ -1,0 +1,17 @@
+<div style="background-color:greenyellow; position: center">
+  <h1 mat-dialog-title>GRATULATIONS</h1>
+  <div  mat-dialog-content>
+    <p>Birthday Party added. Wait for an email with your reservation</p>
+    <p>Your new Birthday Party:</p>
+    <p>BirthdayPerson info:</p>
+    <p>name: {{data.birthdayPerson.name}}</p>
+    <p>surname: {{data.birthdayPerson.surname}}</p>
+    <p>birthdate: {{data.birthdayPerson.birthdate}}</p>
+    <p>Other info:</p>
+    <p>room: {{data.room.name}}</p>
+    <p>pack: {{data.pack.name}}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="close()">Ok</button>
+  </div>
+</div>

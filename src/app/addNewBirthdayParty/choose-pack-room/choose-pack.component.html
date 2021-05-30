@@ -1,0 +1,63 @@
+<h1>Select room and pack</h1>
+<form class="roomPackForm" #roomPack="ngForm">
+  <p>Select PACK</p>
+  <div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Time in Room</th>
+          <th scope="col">Select</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let pack of packsList">
+          <td>{{ pack.id }}</td>
+          <td>{{pack.name }}</td>
+          <td>{{pack.price}}</td>
+          <td>{{pack.timeInRoom}}</td>
+          <td><input type="radio" id="selectPack" name="selectPack" [value]="pack" [(ngModel)]="newBirthdayParty.pack" >
+            <label for="selectPack"></label><br></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p>Select ROOM</p>
+  <div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Seats Number</th>
+          <th scope="col">Description</th>
+          <th scope="col">Select</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let room of roomsList">
+          <td>{{ room.id }}</td>
+          <td>{{room.name }}</td>
+          <td>{{room.seatsNumber}}</td>
+          <td>{{room.description}}</td>
+          <td><input type="radio" id="selectRoom" name="selectRoom" [value]="room" [(ngModel)]="newBirthdayParty.room">
+            <label for="selectRoom"></label><br></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button routerLink="/" (click)="cancel(roomPack)" type="button" class="btn btn-alert"  >Cancel</button>
+  <button routerLink="/chooseBirthdayPerson" (click)="add(roomPack)" type="button" class="btn btn-primary float-right" [disabled]="!roomPack.valid" >Next</button>
+
+</form>
+
+

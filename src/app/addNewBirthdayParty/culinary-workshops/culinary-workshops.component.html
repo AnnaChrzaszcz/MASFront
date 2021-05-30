@@ -1,0 +1,53 @@
+<h1>Offered Culinary Workshops</h1>
+<form class="roomPackForm" #roomPack="ngForm">
+  <p>Select Workshop</p>
+  <div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Type</th>
+          <th scope="col">Price</th>
+          <th scope="col">Description</th>
+          <th scope="col">Select</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let workshop of workshopList">
+          <td>{{ workshop.id }}</td>
+          <td>{{workshop.type }}</td>
+          <td>{{workshop.price}}</td>
+          <td>{{workshop.description}}</td>
+          <td><input type="radio" id="selectWorkshop" name="selectWorkshop" [value]="workshop" [(ngModel)]="selectedWorkshop" >
+            <label for="selectWorkshop"></label><br></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <table *ngIf="selectedWorkshop != null" class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">ClientNumber</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let party of selectedWorkshop.birthdayParties">
+          <td>{{ party.id }}</td>
+          <td>{{party.client.clientNumber}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+
+  <button routerLink="/"  type="button" class="btn btn-primary float-right" [disabled]="!roomPack.valid" >Next</button>
+
+</form>
+
+
+
